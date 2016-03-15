@@ -1,7 +1,8 @@
+
 DROP TABLE appointments;
 DROP TABLE events;
 
-CREATE TABLE events (
+CREATE TABLE events(
   id serial4 PRIMARY KEY,
   start_time TIMESTAMP,
   end_time TIMESTAMP,

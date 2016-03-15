@@ -9,3 +9,4 @@ appointment3 = Appointment.new({ 'title' => 'Presentation on Q1' , 'start_time' 
 appointment1.save
 appointment2.save
 appointment3.save
+
