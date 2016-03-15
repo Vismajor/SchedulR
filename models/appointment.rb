@@ -21,7 +21,7 @@ class Appointment
   end
 
   def save()
-    sql = "INSERT INTO Appointments (title, start_time) VALUES ('#{ @title }', ' #{@start_time}')"
+    sql = "INSERT INTO Appointments (title, start_time, end_time, location, priority ) VALUES ('#{ @title }', ' #{@start_time}', '#{@end_time}', '#{@location}', '#{@priority}')"
     SqlRunner.run_sql( sql )
   end
 
