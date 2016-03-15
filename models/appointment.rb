@@ -1,7 +1,5 @@
-require_relative('../db/sql_runner')
-
-
 require( 'pg' )
+
 require_relative('../db/sql_runner')
 
 class Appointment
