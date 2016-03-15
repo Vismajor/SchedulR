@@ -1,14 +1,11 @@
-require_relative( './day' )
+require_relative( 'appointment' )
+require_relative( 'event' )
 
 class Calendar
 
   def initialize( options )
-    @id =  options['id']
-    @start_time = options['start_time']
-    @end_time = options['end_time']
-    @title = options['title']
-    @location = options['location']
-    @priority = options['priority']
+    @appointments = options['appointments']
+    @events = options['events']
   end
 
 end
