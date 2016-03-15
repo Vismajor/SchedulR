@@ -1,6 +1,9 @@
 require_relative('../db/sql_runner')
 
 
+require( 'pg' )
+require_relative('../db/sql_runner')
+
 class Appointment
 
   def initialize( options )
@@ -15,6 +18,16 @@ class Appointment
   def self.all()
     sql = "SELECT * FROM Appointments"
     return Appointment.map_items(sql)
+  end
+
+  def save()
+    sql = "INSERT INTO Appointments (title, start_time) VALUES ('#{ @title }', ' #{@start_time}')"
+    SqlRunner.run_sql( sql )
+  end
+
+  def self.delete_all 
+    sql = "DELETE FROM Appointments"
+    SqlRunner.run_sql(sql)
   end
 
   def self.map_items(sql)
