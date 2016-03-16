@@ -6,20 +6,24 @@ get '/events' do
   erb :'events/index'
 end
 
+get '/events/new' do
+  erb :'events/new'
+end
+
 get '/events/:id' do
   @event = Event.find(params[:id])
   erb :'events/show'
 end
 
-get '/events/new' do
-  erb :'events/new'
-end
-
 post '/events' do
+  @event = Event.new(params)
+  @event.save
 end
 
 post '/events/:id' do
+  @event = Event.new(params)
+  @event.update()
 end
 
-post '/events/:id/delete' do
+delete '/events/:id' do
 end

@@ -18,8 +18,12 @@ class Appointment
   end
 
   def save()
-    sql = "INSERT INTO Appointments (title, start_time, end_time, location, priority ) VALUES ('#{ @title }', ' #{@start_time}', '#{@end_time}', '#{@location}', '#{@priority}')"
+    sql = "INSERT INTO Appointments (title, start_time, end_time, location, priority ) VALUES ('#{ @title }', '#{@start_time}', '#{@end_time}', '#{@location}', '#{@priority}')"
     SqlRunner.run_sql( sql )
+  end
+
+  def update()
+    sql = "UPDATE Appointments  WHERE "
   end
 
   def self.delete_all 
