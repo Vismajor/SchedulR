@@ -1,7 +1,11 @@
+require_relative('../db/sql_runner')
+
+
 require( 'pg' )
 require_relative('../db/sql_runner')
 
 class Appointment
+  attr_reader :title, :location, :id, :priority, :start_time, :end_time
 
   def initialize( options )
     @id =  options['id']
@@ -12,18 +16,19 @@ class Appointment
     @priority = options['priority']
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM Appointments WHERE id = #{id}"
+    return Appointment.map_item(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM Appointments"
     return Appointment.map_items(sql)
   end
 
   def save()
-    sql = "INSERT INTO Appointments (title, start_time, end_time, location, priority ) VALUES ('#{ @title }', '#{@start_time}', '#{@end_time}', '#{@location}', '#{@priority}')"
+    sql = "INSERT INTO Appointments (title, start_time) VALUES ('#{ @title }', ' #{@start_time}')"
     SqlRunner.run_sql( sql )
-  end
-
-  def update()
-    sql = "UPDATE Appointments  WHERE "
   end
 
   def self.delete_all 

@@ -15,6 +15,11 @@ class Event
     return Event.map_items(sql)
   end
 
+  def find()
+
+
+  end
+
   def save()
     sql = "INSERT INTO Events (title, start_time, end_time, location ) VALUES ('#{ @title }', ' #{@start_time}', '#{@end_time}', '#{@location}')"
     SqlRunner.run_sql( sql )
