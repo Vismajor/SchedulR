@@ -32,6 +32,13 @@ post '/appointments' do
 end
 
 post '/appointments/:id' do
+  @starting_date = params[:starting_date]
+  @starting_time = params[:starting_time]
+  @ending_date = params[:ending_date]
+  @ending_time = params[:ending_time]
+  params['start_time'] = "#{@starting_date} #{@starting_time}"
+  params['end_time'] = "#{@ending_date} #{@ending_time}"
+  binding.pry
   @appointment = Appointment.new(params)
   @appointment.update()
 end

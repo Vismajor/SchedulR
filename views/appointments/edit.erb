@@ -17,6 +17,13 @@
       <label for="location">Location:</label>
       <input type="text" name="location" id="location" value="<%= @appointment.location %>"><br>
 
+      <label for="priority">Priority:</label>
+      <input type="radio" name="priority" value="1" checked> 1<br>
+      <input type="radio" name="priority" value="2"> 2<br>
+      <input type="radio" name="priority" value="3"> 3<br>
+      <input type="radio" name="priority" value="4"> 4<br>
+      <input type="radio" name="priority" value="5"> 5
+
 
       <input type='submit' value="Update appointment">
   </form>
