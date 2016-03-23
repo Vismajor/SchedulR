@@ -37,6 +37,27 @@ class Appointment
     SqlRunner.run_sql(sql)
   end
 
+#Date returning functions
+  def starting_date
+    starting_array = @start_time.split
+    return starting_array[0]
+  end
+
+  def starting_time
+    starting_array = @start_time.split
+    return starting_array[1]
+  end
+
+  def ending_date
+    ending_array = @end_time.split
+    return ending_array[0]
+  end
+
+  def ending_time
+    ending_array = @end_time.split
+    return ending_array[1]
+  end
+
   def self.map_items(sql)
     appointment = SqlRunner.run_sql(sql)
     result = appointment.map { |product| Appointment.new( product ) }

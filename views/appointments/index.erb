@@ -1,7 +1,5 @@
 <% @appointments.each do |appointment| %>
-Title:<%= appointment.title %>
-Time: <%= appointment.start_time %> - <%= appointment.end_time %>
 
-Location: <%= appointment.location %>
+Title: <a href="/appointments/<%= "#{appointment.id}" %>"><%= appointment.title %> </a> 
 
 <% end %>

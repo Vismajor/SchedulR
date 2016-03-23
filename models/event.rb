@@ -1,9 +1,13 @@
 require( 'pg' )
+require( 'pry-byebug' )
 require_relative('../db/sql_runner')
 
 class Event
+  attr_reader :title, :location, :id, :end_time, :start_time
+
 
   def initialize( options )
+    @id =  options['id']
     @start_time = options['start_time']
     @end_time = options['end_time']
     @title = options['title']
@@ -28,6 +32,27 @@ class Event
   def self.delete_all 
     sql = "DELETE FROM Events"
     SqlRunner.run_sql(sql)
+  end
+
+#Date returning functions
+  def starting_date
+    starting_array = @start_time.split
+    return starting_array[0]
+  end
+
+  def starting_time
+    starting_array = @start_time.split
+    return starting_array[1]
+  end
+
+  def ending_date
+    ending_array = @end_time.split
+    return ending_array[0]
+  end
+
+  def ending_time
+    ending_array = @end_time.split
+    return ending_array[1]
   end
 
   def self.map_items(sql)

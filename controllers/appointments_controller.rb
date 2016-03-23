@@ -11,9 +11,13 @@ get '/appointments/new' do
 end
 
 get '/appointments/:id' do
-  binding.pry
   @appointment = Appointment.find(params[:id])
   erb :'appointments/show'
+end
+
+get '/appointments/:id/edit' do
+  @appointment = Appointment.find(params[:id])
+  erb :'appointments/edit'
 end
 
 post '/appointments' do
@@ -23,7 +27,6 @@ post '/appointments' do
   @ending_time = params[:ending_time]
   params['start_time'] = "#{@starting_date} #{@starting_time}:00"
   params['end_time'] = "#{@ending_date} #{@ending_time}:00"
-  binding.pry
   @appointment = Appointment.new(params)
   @appointment.save
 end

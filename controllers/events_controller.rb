@@ -15,6 +15,11 @@ get '/events/:id' do
   erb :'events/show'
 end
 
+get '/events/:id/edit' do
+  @event = Event.find(params[:id])
+  erb :'events/edit'
+end
+
 post '/events' do
   @starting_date = params[:starting_date]
   @starting_time = params[:starting_time]
