@@ -15,9 +15,9 @@ class Event
     return Event.map_items(sql)
   end
 
-  def find()
-
-
+  def self.find(id)
+    sql = "SELECT * FROM Events WHERE id = #{id}"
+    return Event.map_item(sql)
   end
 
   def save()

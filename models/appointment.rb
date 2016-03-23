@@ -5,7 +5,7 @@ require( 'pg' )
 require_relative('../db/sql_runner')
 
 class Appointment
-  attr_reader :title, :location, :id, :priority, :start_time, :end_time
+  attr_reader :title, :location, :id, :priority, :end_time, :start_time
 
   def initialize( options )
     @id =  options['id']
@@ -27,7 +27,8 @@ class Appointment
   end
 
   def save()
-    sql = "INSERT INTO Appointments (title, start_time) VALUES ('#{ @title }', ' #{@start_time}')"
+    # Timestamp needs single quotation marks around them
+    sql = "INSERT INTO Appointments (start_time, end_time, title, location, priority ) VALUES ('#{@start_time}', '#{@end_time}', '#{@title}', '#{@location}', #{@priority})"
     SqlRunner.run_sql( sql )
   end
 

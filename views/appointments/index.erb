@@ -1,0 +1,7 @@
+<% @appointments.each do |appointment| %>
+Title:<%= appointment.title %>
+Time: <%= appointment.start_time %> - <%= appointment.end_time %>
+
+Location: <%= appointment.location %>
+
+<% end %>

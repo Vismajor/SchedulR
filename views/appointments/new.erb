@@ -1,0 +1,26 @@
+<form action="/appointments" method="post">
+  <label for="name">Title:</label>
+  <input type="text" name="title" id="title"><br>
+
+  <label for="start_time">Start time:</label>
+  <input type="date" name="starting_date" id="starting_date"><br>
+  <input type="time" name="starting_time" id="starting_time"><br>
+
+
+
+  <label for="end_time">End time:</label>
+  <input type="date" name="ending_date" id="ending_date"><br>
+  <input type="time" name="ending_time" id="ending_time"><br>
+
+  <label for="location">Location:</label>
+  <input type="text" name="location" id="location"><br>
+
+  <label for="priority">Priority:</label>
+  <input type="radio" name="priority" value="1" checked> 1<br>
+  <input type="radio" name="priority" value="2"> 2<br>
+  <input type="radio" name="priority" value="3"> 3<br>
+  <input type="radio" name="priority" value="4"> 4<br>
+  <input type="radio" name="priority" value="5"> 5
+
+  <input type='submit' value="Create Appointment">
+</form>
