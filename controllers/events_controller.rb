@@ -21,6 +21,8 @@ get '/events/:id/edit' do
 end
 
 post '/events' do
+  # Changing params to make use of user-friendly HTML forms
+  # Move logic to the model
   @starting_date = params[:starting_date]
   @starting_time = params[:starting_time]
   @ending_date = params[:ending_date]
@@ -32,9 +34,18 @@ post '/events' do
 end
 
 post '/events/:id' do
+  # Move logic to model
+  @starting_date = params[:starting_date]
+  @starting_time = params[:starting_time]
+  @ending_date = params[:ending_date]
+  @ending_time = params[:ending_time]
+  params['start_time'] = "#{@starting_date} #{@starting_time}"
+  params['end_time'] = "#{@ending_date} #{@ending_time}"
   @event = Event.new(params)
   @event.update()
 end
 
 delete '/events/:id' do
+  @event = Event.find(params[:id])
+  @event.destroy(@event.id)
 end

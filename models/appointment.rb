@@ -42,6 +42,11 @@ class Appointment
     SqlRunner.run_sql(sql)
   end
 
+  def destroy( id )
+     sql = "DELETE FROM Appointments WHERE id = #{id}"
+     SqlRunner.run_sql( sql )
+  end
+
 #Date returning functions
   def starting_date
     starting_array = @start_time.split

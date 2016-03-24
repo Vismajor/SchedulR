@@ -29,6 +29,16 @@ class Event
     SqlRunner.run_sql( sql )
   end
 
+  def update()
+    sql = "UPDATE Events SET start_time = '#{ @start_time }', end_time = '#{ @end_time }', title = '#{ @title }', location='#{ @location }' WHERE id = #{@id}"
+    SqlRunner.run_sql( sql )
+  end
+
+  def destroy( id )
+     sql = "DELETE FROM Events WHERE id = #{id}"
+     SqlRunner.run_sql( sql )
+  end
+
   def self.delete_all 
     sql = "DELETE FROM Events"
     SqlRunner.run_sql(sql)

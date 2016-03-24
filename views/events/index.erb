@@ -1,5 +1,9 @@
 <% @events.each do |event| %>
 
-Title: <a href="/events/<%= "#{event.id}" %>"><%= event.title %> </a> 
+Title: <a href="/events/<%= "#{event.id}" %>"><%= event.title %></a>
+<form method="post" action="/events/<%= event.id %>"> 
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete</button>
+</form> <br>
 
 <% end %>
