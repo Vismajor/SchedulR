@@ -7,7 +7,7 @@ class Event
 
 
   def initialize( options )
-    @id =  options['id']
+    @id =  options['id'].to_i
     @start_time = options['start_time']
     @end_time = options['end_time']
     @title = options['title']
