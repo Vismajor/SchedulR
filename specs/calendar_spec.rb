@@ -4,7 +4,7 @@ require_relative( '../models/calendar' )
 require_relative( '../models/appointment' )
 require_relative( '../models/event' )
 
-class TestCalendar > Minitest::test
+class TestCalendar < MiniTest::Test
 
   def setup
     appointment1 = Appointment.new({ 'title' => 'Dentist' , 'start_time' => '2016-03-29 09:00:00' , 'end_time' => '2016-03-29 10:00:00', 'location' => 'Morningside', 'priority' => 2 })
@@ -17,6 +17,18 @@ class TestCalendar > Minitest::test
     }
     @calendar = Calendar.new( options )
   end
+
+  def test_should_have_30_days()
+    result = @calendar.days()
+    assert_equal( 30, result.length )
+  end
+
+  def test_should_have_select_days()
+    result = @calendar.days( DateTime.now, DateTime.now + 5 )
+    assert_equal( 5, result.length )
+  end
+
+
 
   
 
