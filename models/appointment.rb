@@ -1,10 +1,8 @@
-require_relative('../db/sql_runner')
-
-
 require( 'pg' )
 require_relative('../db/sql_runner')
 
 class Appointment
+
   attr_reader :title, :location, :id, :priority, :start_date, :start_time, :end_date, :end_time
 
   def initialize( options )

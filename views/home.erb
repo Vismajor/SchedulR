@@ -1,0 +1,25 @@
+<h1>Schedulr</h1>
+
+<div class="panel __blue-background __box-shadow">
+  <div class="panel-header">
+    DATES - APPOINTMENTS - EVENTS
+  </div>
+
+  <ul>
+    <% @calendar.day_order.each do |day_name| %>
+      <li><%= day_name %></li>
+    <% end %>
+  </ul>
+
+  <ul class="panel-calendar">
+    <% @calendar.days.each do |day| %>
+      <li>
+        <%= day.pretty_string %>
+        <% if @calendar.appointments( day ).length > 0 %>
+          <span class="__calendar-appt"></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
