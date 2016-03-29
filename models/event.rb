@@ -3,12 +3,14 @@ require( 'pry-byebug' )
 require_relative('../db/sql_runner')
 
 class Event
-  attr_reader :title, :location, :id, :end_time, :start_time
+  attr_reader :title, :location, :id, :start_date, :start_time, :end_date, :end_time
 
 
   def initialize( options )
     @id =  options['id'].to_i
+    @start_date = options['start_date']
     @start_time = options['start_time']
+    @end_date = options['end_date']
     @end_time = options['end_time']
     @title = options['title']
     @location = options['location']
@@ -25,12 +27,12 @@ class Event
   end
 
   def save()
-    sql = "INSERT INTO Events (title, start_time, end_time, location ) VALUES ('#{ @title }', ' #{@start_time}', '#{@end_time}', '#{@location}')"
+    sql = "INSERT INTO Events (title, start_date, start_time, end_date, end_time, location ) VALUES ('#{ @title }', '#{@start_date}', '#{@start_time}', '#{@end_date}', '#{@end_time}', '#{@location}')"
     SqlRunner.run_sql( sql )
   end
 
   def update()
-    sql = "UPDATE Events SET start_time = '#{ @start_time }', end_time = '#{ @end_time }', title = '#{ @title }', location='#{ @location }' WHERE id = #{@id}"
+    sql = "UPDATE Events SET start_date = '#{@start_date}', start_time = '#{ @start_time }', end_date = '#{@end_date}', end_time = '#{ @end_time }', title = '#{ @title }', location='#{ @location }' WHERE id = #{@id}"
     SqlRunner.run_sql( sql )
   end
 

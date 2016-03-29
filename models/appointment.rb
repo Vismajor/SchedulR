@@ -5,11 +5,13 @@ require( 'pg' )
 require_relative('../db/sql_runner')
 
 class Appointment
-  attr_reader :title, :location, :id, :priority, :end_time, :start_time
+  attr_reader :title, :location, :id, :priority, :start_date, :start_time, :end_date, :end_time
 
   def initialize( options )
     @id =  options['id']
+    @start_date = options['start_date']
     @start_time = options['start_time']
+    @end_date = options['end_date']
     @end_time = options['end_time']
     @title = options['title']
     @location = options['location']
@@ -27,13 +29,12 @@ class Appointment
   end
 
   def save()
-    # Timestamp needs single quotation marks around them
-    sql = "INSERT INTO Appointments (start_time, end_time, title, location, priority ) VALUES ('#{@start_time}', '#{@end_time}', '#{@title}', '#{@location}', #{@priority})"
+    sql = "INSERT INTO Appointments (start_date, start_time, end_date, end_time, title, location, priority ) VALUES ('#{@start_date}', '#{@start_time}', '#{@end_date}', '#{@end_time}', '#{@title}', '#{@location}', #{@priority})"
     SqlRunner.run_sql( sql )
   end
 
   def update()
-    sql = "UPDATE Appointments SET start_time = '#{ @start_time }', end_time = '#{ @end_time }', title = '#{ @title }', location='#{ @location }', priority=#{ @priority } WHERE id = #{@id}"
+    sql = "UPDATE Appointments SET start_date = '#{@start_date}', start_time = '#{ @start_time }', end_date = '#{@end_date}', end_time = '#{ @end_time }', title = '#{ @title }', location='#{ @location }', priority=#{ @priority } WHERE id = #{@id}"
     SqlRunner.run_sql( sql )
   end
 
@@ -45,27 +46,6 @@ class Appointment
   def destroy( id )
      sql = "DELETE FROM Appointments WHERE id = #{id}"
      SqlRunner.run_sql( sql )
-  end
-
-#Date returning functions
-  def starting_date
-    starting_array = @start_time.split
-    return starting_array[0]
-  end
-
-  def starting_time
-    starting_array = @start_time.split
-    return starting_array[1]
-  end
-
-  def ending_date
-    ending_array = @end_time.split
-    return ending_array[0]
-  end
-
-  def ending_time
-    ending_array = @end_time.split
-    return ending_array[1]
   end
 
   def self.map_items(sql)

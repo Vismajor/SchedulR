@@ -1,5 +1,7 @@
 <% @appointments.each do |appointment| %>
-
-Title: <a href="/appointments/<%= "#{appointment.id}" %>"><%= appointment.title %> </a> 
-
+Title: <a href="/appointments/<%= "#{appointment.id}" %>"><%= appointment.title %></a>
+<form method="post" action="/appointments/<%= appointment.id %>"> 
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete</button>
+</form> <br>
 <% end %>
