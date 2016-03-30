@@ -1,29 +1,35 @@
-<h1>Schedulr</h1>
+<div class="container">
 
-<div class="panel __blue-background __box-shadow">
-  <div class="panel-header">
-    DATES - APPOINTMENTS - EVENTS
-  </div>
+  <div class="grid grid-4">
+    <div class="panel __blue-background __box-shadow">
+      <div class="panel-header">
+        DATES - APPOINTMENTS - EVENTS
+      </div>
 
-  <ul class="panel-calendar-days">
-    <% @calendar.day_order.each do |day_name| %>
-      <li><%= day_name %></li>
-    <% end %>
-  </ul>
-
-  <ul class="panel-calendar">
-    <% @calendar.days.each do |day| %>
-      <li <%= "class='__blue-background-pale'" if day.even_month %> >
-        <%= day.pretty_string %>
-        <% if @calendar.appointments( day ).length > 0 %>
-          <span class="__calendar-appt"></span>
+      <ul class="panel-calendar-days">
+        <% @calendar.day_order.each do |day_name| %>
+          <li><%= day_name %></li>
         <% end %>
+      </ul>
 
-      </li>
-    <% end %>
-  </ul>
-</div>
+      <ul class="panel-calendar">
+        <% @calendar.days.each do |day| %>
+          <li <%= "class='__blue-pale'" if !day.current_month? %>>
+            <%= day.pretty_string %>
+            <% if @calendar.appointments( day ).length > 0 %>
+              <span class="__calendar-appt"></span>
+            <% end %>
 
-<div class="panel __blue-background __box-shadow">
-<%= erb :'appointments/new' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="grid grid-4">
+    <div class="panel __l-grey-background __box-shadow">
+      <%#= erb :'appointments/show' %>
+    </div>
+  </div>
+  <%= erb :'appointments/new' %>
+
 </div>

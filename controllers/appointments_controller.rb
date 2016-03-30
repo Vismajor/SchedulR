@@ -23,7 +23,7 @@ end
 post '/appointments' do
   @appointment = Appointment.new(params)
   @appointment.save
-  redirect to("/appointments")
+  redirect to("/")
 end
 
 post '/appointments/:id' do

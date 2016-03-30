@@ -4,8 +4,8 @@ class DateTime
     self.strftime( "%d" )
   end
 
-  def even_month
-    self.strftime("%m").to_i % 2 == 0
+  def current_month?
+    self.month == DateTime.now.month
   end
 
 end
