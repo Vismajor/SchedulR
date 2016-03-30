@@ -1,27 +1,31 @@
 <form action="/appointments" method="post">
-  <label for="name">Title:</label>
-  <input type="text" name="title" id="title"><br>
+  <label for="name"></label>
+  <textarea name="title" id="title" class="__blue-background" placeholder="APPOINTMENT TITLE"></textarea><br>
 
-  <label for="start_date">Start date:</label>
-  <input type="date" name="start_date" id="start_date" value="<%= Date.today %>"><br>
-  <label for="start_time">Start time:</label>
+  <div class="appointment-form">
+  <label for="start_date">From:</label>
+  <input type="date" name="start_date" id="start_date" value="<%= Date.today %>">
+  <label for="start_time"></label>
   <input type="time" name="start_time" id="start_time" value="09:00"><br>
+  </div>
 
 
-  <label for="end_date">End date:</label>
-  <input type="date" name="end_date" id="end_date" value="<%= Date.today %>"><br>
-  <label for="end_time">End time:</label>
+  <label for="end_date">To:</label>
+  <input type="date" name="end_date" id="end_date" value="<%= Date.today %>">
+  <label for="end_time"></label>
   <input type="time" name="end_time" id="end_time" value="10:00"><br>
 
-  <label for="location">Location:</label>
+
+  <label for="location">Where:</label>
   <input type="text" name="location" id="location"><br>
 
   <label for="priority">Priority:</label>
-  <input type="radio" name="priority" value="1" checked> 1<br>
-  <input type="radio" name="priority" value="2"> 2<br>
-  <input type="radio" name="priority" value="3"> 3<br>
-  <input type="radio" name="priority" value="4"> 4<br>
+  <div class="priority-radio">
+  <input type="radio" name="priority" value="1" checked> 1
+  <input type="radio" name="priority" value="2"> 2
+  <input type="radio" name="priority" value="3"> 3
+  <input type="radio" name="priority" value="4"> 4
   <input type="radio" name="priority" value="5"> 5
-
-  <input type='submit' value="Create Appointment">
+  </div>
+  <input type='submit' value="ADD">
 </form>
