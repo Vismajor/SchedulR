@@ -1,4 +1,3 @@
-
 DROP TABLE appointments;
 DROP TABLE events;
 

@@ -6,14 +6,14 @@ class Appointment
   attr_reader :title, :location, :id, :priority, :start_date, :start_time, :end_date, :end_time
 
   def initialize( options )
-    @id =  options['id']
+    @id =  options['id'].to_i
     @start_date = options['start_date']
     @start_time = options['start_time']
     @end_date = options['end_date']
     @end_time = options['end_time']
     @title = options['title']
     @location = options['location']
-    @priority = options['priority']
+    @priority = options['priority'].to_i
   end
 
   def self.find(id)
@@ -27,8 +27,10 @@ class Appointment
   end
 
   def save()
-    sql = "INSERT INTO Appointments (start_date, start_time, end_date, end_time, title, location, priority ) VALUES ('#{@start_date}', '#{@start_time}', '#{@end_date}', '#{@end_time}', '#{@title}', '#{@location}', #{@priority})"
-    SqlRunner.run_sql( sql )
+    sql = "INSERT INTO Appointments (start_date, start_time, end_date, end_time, title, location, priority ) VALUES ('#{@start_date}', '#{@start_time}', '#{@end_date}', '#{@end_time}', '#{@title}', '#{@location}', #{@priority}) RETURNING *"
+    appointment = SqlRunner.run_sql( sql ).first
+    result = Appointment.new( appointment )
+    return result
   end
 
   def update()

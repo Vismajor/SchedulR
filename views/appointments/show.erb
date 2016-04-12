@@ -1,6 +1,9 @@
-
-
-<h2><%= @appointment.title %></h2>
-<p>When: <%= @appointment.start_date %> <%= @appointment.start_time %> --- <%= @appointment.end_date %> <%= @appointment.end_time %></p>
-<p>Where: <%= @appointment.location %></p>
-<p>Priority: <%= @appointment.priority %></p>
+<div class="grid grid-4">
+  <div class="panel __l-grey-background __box-shadow">
+    <h2><%= @calendar.appointments.first.title %></h2>
+    <ul>
+      <li><%= @calendar.appointments.first.location %></li>
+      <li><%= @calendar.appointments.first.start_date %></li>
+    </ul>
+  </div>
+</div>

@@ -19,21 +19,28 @@ class TestCalendar < MiniTest::Test
     @calendar = Calendar.new( options )
   end
 
-  def test_should_have_30_days()
+  def test_should_have_35_days()
     result = @calendar.days()
-    assert_equal( 30, result.length )
+    assert_equal( 35, result.length )
   end
 
   def test_should_have_select_days()
-    result = @calendar.days( DateTime.now, DateTime.now + 5 )
-    assert_equal( 5, result.length )
+    start_date = DateTime.parse( "2016-01-01" )
+    end_date = DateTime.parse( "2016-01-05" )
+    result = @calendar.days( start_date, end_date )
+    assert_equal( start_date, result.first )
+    assert_equal( DateTime.parse( "2016-01-04" ), result.last )
   end
 
   def test_appointments()
-    day = DateTime.parse('2016-10-15');
-    result = @calendar.appointments( day );
-    puts result.inspect
-    assert_equal( 1, result.length );
+    day = DateTime.parse('2016-10-15')
+    result = @calendar.appointments_on( day )
+    assert_equal( Appointment, result.first.class )
+  end
+
+  def test_date_sort()
+    result = @calendar.date_sort()
+    assert_equal( '2004-10-10', result.start_date )
   end
 
 end

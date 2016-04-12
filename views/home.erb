@@ -15,8 +15,8 @@
       <ul class="panel-calendar">
         <% @calendar.days.each do |day| %>
           <li <%= "class='__blue-pale'" if !day.current_month? %>>
-            <%= day.pretty_string %>
-            <% if @calendar.appointments( day ).length > 0 %>
+            <%= day.day %>
+            <% if @calendar.appointments_on( day ).length > 0 %>
               <span class="__calendar-appt"></span>
             <% end %>
 
@@ -25,11 +25,8 @@
       </ul>
     </div>
   </div>
-  <div class="grid grid-4">
-    <div class="panel __l-grey-background __box-shadow">
-      <%#= erb :'appointments/show' %>
-    </div>
-  </div>
+
+  <%= erb( :'appointments/show' ) %>
   <%= erb :'appointments/new' %>
 
 </div>

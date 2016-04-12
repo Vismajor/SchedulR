@@ -1,6 +1,6 @@
 class DateTime
 
-  def pretty_string
+  def day
     self.strftime( "%d" )
   end
 

@@ -2,8 +2,8 @@
   <div class="panel __turquoise-background __box-shadow">
 
     <form class="form" action="/appointments" method="post">
-      <label for="name"></label>
-      <input type="text" class="form-text" id="title" placeholder="Appointment Title" >
+      <label for="title"></label>
+      <input name="title" type="text" class="form-text" id="title" placeholder="Appointment Title">
       <div class="appointment-form">
       <label for="start_date">From:</label>
       <input type="date" name="start_date" id="start_date" value="<%= Date.today %>">
